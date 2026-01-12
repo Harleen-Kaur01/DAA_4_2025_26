@@ -34,9 +34,14 @@ void complexRec(int n, int depth) {
         small[i] = i * i;
         operations++;
     }
-
-    reverse(small.begin(), small.end());
-    operations += n;
+if (n % 3 == 0) {
+       reverse(small.begin(), small.end());
+       operations+=n;
+    } 
+    else {
+       reverse(small.begin(), small.end());
+       operations+=n;
+    }
 
     complexRec(n / 2, depth + 1);
     complexRec(n / 2, depth + 1);
