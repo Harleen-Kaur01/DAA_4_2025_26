@@ -58,6 +58,20 @@ void delindx(int i){
     heapify_down(i);
     heapify_up(i);
 }
+
+void deleteElement(int val) {
+    int i;
+    for (i = 0; i < heapsize; i++) {
+        if (heap[i] == val) break;
+    }
+    if (i == heapsize) return;
+    heap[i] = heap[heapsize - 1];
+    heapsize--;
+    if (i > 0 && heap[i] < heap[(i - 1) / 2])
+        heapify_up(i);
+    else
+        heapify_down(i);
+}
 int main(){
     insert(10);
     insert(17);
@@ -69,6 +83,7 @@ int main(){
     delmin();
     delmin();
     delindx(1);
+    deleteElement(25);
     for(int i=0;i<heapsize;i++){
         cout<<heap[i]<<" ";
     }
